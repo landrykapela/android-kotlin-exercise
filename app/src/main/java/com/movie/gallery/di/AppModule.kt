@@ -20,12 +20,6 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun getHomePageTextTesting(): String {
-        return "Welcome to home page where you will find all movies you like"
-    }
-
-    @Singleton
-    @Provides
     fun getRoomDatabaseInstance(@ApplicationContext context: Context): MovieDatabase {
         return Room.databaseBuilder(context, MovieDatabase::class.java, "Movie")
             .fallbackToDestructiveMigration().build()

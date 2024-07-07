@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.movie.gallery.R
+import com.movie.gallery.adapter.MoviesAdapter
 import com.movie.gallery.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -23,6 +25,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val moviesAdapter=MoviesAdapter()
+
+
+        binding.movieRecyclerView.apply {
+            layoutManager=GridLayoutManager(requireActivity(),2)
+            adapter=moviesAdapter
+        }
+
     }
 
 }
