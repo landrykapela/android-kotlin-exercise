@@ -3,8 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-    id ("dagger.hilt.android.plugin")
-    id ("androidx.navigation.safeargs.kotlin")
+    id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -47,7 +47,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    hilt{
+    hilt {
         enableAggregatingTask = true
     }
 }
@@ -84,15 +84,15 @@ dependencies {
 
 
     //retrofit dependency
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     //impelement image circle
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     //glide dependency
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     //lifecycle dependency
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
@@ -108,6 +108,9 @@ dependencies {
     //navigation dependency
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    //swipe refresh layout dependency
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 
 
 }

@@ -9,9 +9,9 @@ import javax.annotation.processing.Generated
 @Entity(tableName = "movie_entity")
 data class MovieEntity(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "movie_id")
-    val movieId:Long,
+    val movieId:Int,
 
     @ColumnInfo(name = "movie_title")
     val movieTitle:String,
@@ -22,12 +22,7 @@ data class MovieEntity(
     @ColumnInfo("poster_path")
     val posterPath:String,
 
-    @ColumnInfo("status")
-    val status:String,
-
     @ColumnInfo("release_date")
     val releaseDate:String,
 
-    @ColumnInfo("budget")
-    val budget:Int
 )

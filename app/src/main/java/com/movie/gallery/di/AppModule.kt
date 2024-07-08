@@ -21,7 +21,7 @@ class AppModule {
     @Singleton
     @Provides
     fun getRoomDatabaseInstance(@ApplicationContext context: Context): MovieDatabase {
-        return Room.databaseBuilder(context, MovieDatabase::class.java, "Movie")
+        return Room.databaseBuilder(context, MovieDatabase::class.java, "movie")
             .fallbackToDestructiveMigration().build()
     }
 
