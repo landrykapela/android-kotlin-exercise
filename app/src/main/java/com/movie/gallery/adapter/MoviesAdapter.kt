@@ -11,6 +11,8 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
@@ -22,16 +24,9 @@ import com.movie.gallery.util.UtilityClass
 import java.io.ByteArrayOutputStream
 
 class MoviesAdapter(private val context: Context) :
-    RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
-
-    private var movieList: MutableList<Result> = mutableListOf()
+    PagingDataAdapter<Result,MoviesAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
     var onFavouriteImageClicked: ((MovieEntity) -> Unit)? = null
-    val isFavouriteButtonClicked = false
-
-    fun setData(data: MutableList<Result>) {
-        movieList = data
-    }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -42,13 +37,13 @@ class MoviesAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movieList[position]
+        val movie =getItem(position)
         val imageView = holder.itemView.findViewById<ImageView>(R.id.posterImage)
 
         //load image using glide
 
         Glide.with(context)
-            .load(UtilityClass.TMDB_IMAGE_BASE_URL + movie.posterPath)
+            .load(UtilityClass.TMDB_IMAGE_BASE_URL + movie!!.posterPath)
             .into(imageView).also {
                 holder.itemView.findViewById<ImageView>(R.id.imgFavourite).apply {
                     visibility = View.VISIBLE
@@ -81,14 +76,6 @@ class MoviesAdapter(private val context: Context) :
 
     }
 
-    override fun getItemCount(): Int {
-        return if (movieList.isNotEmpty()) {
-            movieList.size
-        } else {
-            0
-        }
-    }
-
 
     private fun loadImageAndConvertToBase64(imageUrl: String, onComplete: (String) -> Unit) {
         Glide.with(context)
@@ -109,6 +96,19 @@ class MoviesAdapter(private val context: Context) :
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
         val byteArray = byteArrayOutputStream.toByteArray()
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
+    }
+
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Result>() {
+            override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 
 }

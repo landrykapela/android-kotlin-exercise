@@ -18,7 +18,6 @@ class UtilityClass {
         const val TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/"
         const val TMDB_ACCESS_TOKEN_API_KEY =
             "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2FmZGYyNWFlOWQyYTA5ZWEzNzQ4YjE0NjJhYjEyYSIsIm5iZiI6MTcyMDE4NzA3OS4zMDAwOTMsInN1YiI6IjY2ODdmNzU1NzkxYzIyNzcyNDkzNzA2YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Du9GAg4wJVWCB3pRk8sg8CVlLQkA-UGlPb1-13rqUeY"
-        const val TMDB_API_KEY = "27afdf25ae9d2a09ea3748b1462ab12a"
 
 
         //method to check internet connection
